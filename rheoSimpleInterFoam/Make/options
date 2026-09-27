@@ -1,0 +1,31 @@
+EXE_INC = -I$(WM_PROJECT_DIR)/applications/solvers/multiphase/VoF
+EXE_INC += -I$(LIB_SRC)/phaseSystemModels/twoPhaseInter/incompressibleInterPhaseTransportModel/lnInclude
+EXE_INC += -I$(LIB_SRC)/phaseSystemModels/twoPhaseInter/VoFphaseIncompressibleTurbulenceModels/lnInclude
+EXE_INC += -I$(LIB_SRC)/finiteVolume/lnInclude
+EXE_INC += -I$(LIB_SRC)/meshTools/lnInclude
+EXE_INC += -I$(LIB_SRC)/sampling/lnInclude
+EXE_INC += -I$(LIB_SRC)/dynamicFvMesh/lnInclude
+EXE_INC += -I$(LIB_SRC)/transportModels
+EXE_INC += -I$(LIB_SRC)/transportModels/incompressible/lnInclude
+EXE_INC += -I$(LIB_SRC)/transportModels/interfaceProperties/lnInclude
+EXE_INC += -I$(LIB_SRC)/transportModels/twoPhaseMixture/lnInclude
+EXE_INC += -I$(LIB_SRC)/TurbulenceModels/turbulenceModels/lnInclude
+EXE_INC += -I$(LIB_SRC)/TurbulenceModels/incompressible/lnInclude
+EXE_INC += -I$(LIB_SRC)/TurbulenceModels/phaseIncompressible/lnInclude
+EXE_INC += -I$(LIB_SRC)/transportModels/immiscibleIncompressibleTwoPhaseMixture/lnInclude
+
+EXE_LIBS = -lfiniteVolume
+EXE_LIBS += -lfvOptions
+EXE_LIBS += -lmeshTools
+EXE_LIBS += -lsampling
+EXE_LIBS += -ldynamicFvMesh
+EXE_LIBS += -lincompressibleTransportModels
+EXE_LIBS += -linterfaceProperties
+EXE_LIBS += -limmiscibleIncompressibleTwoPhaseMixture
+EXE_LIBS += -ltwoPhaseProperties
+EXE_LIBS += -lturbulenceModels
+EXE_LIBS += -lincompressibleTurbulenceModels
+EXE_LIBS += -lwaveModels
+EXE_LIBS += -lVoFphaseTurbulentTransportModels
+EXE_LIBS += -lincompressibleInterPhaseTransportModels
+
