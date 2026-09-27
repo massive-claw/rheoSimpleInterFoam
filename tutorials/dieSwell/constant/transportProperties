@@ -1,0 +1,42 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Version:  2606
+    \\  /    A nd           |
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      transportProperties;
+}
+
+phases (water air);
+
+water
+{
+    transportModel  Newtonian;
+    nu              1e-04;
+    rho             1000;
+}
+
+air
+{
+    transportModel  Newtonian;
+    nu              1.48e-05;
+    rho             1;
+}
+
+sigma           0.03;
+
+// Viscoelastic properties
+Psi1            [1 -1 0 0 0 0 0] 0.01;
+Psi2            [1 -1 0 0 0 0 0] 0.0;
+
+// High-Wi numerical stabilization parameters
+lambda          [0 0 1 0 0 0 0] 0.05;
+powerN          [0 0 0 0 0 0 0] 0.5;
+maxStressRatio  20.0;
+muNum           [1 -1 -1 0 0 0 0] 0.005;
