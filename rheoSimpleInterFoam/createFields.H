@@ -157,6 +157,26 @@ dimensionedScalar Psi2
     transportProperties
 );
 
+dimensionedScalar lambda
+(
+    transportProperties.lookupOrDefault<dimensionedScalar>("lambda", dimensionedScalar("lambda", dimTime, 0.1))
+);
+
+dimensionedScalar powerN
+(
+    transportProperties.lookupOrDefault<dimensionedScalar>("powerN", dimensionedScalar("powerN", dimless, 0.5))
+);
+
+scalar maxStressRatio
+(
+    transportProperties.lookupOrDefault<scalar>("maxStressRatio", 20.0)
+);
+
+dimensionedScalar muNum
+(
+    transportProperties.lookupOrDefault<dimensionedScalar>("muNum", dimensionedScalar("muNum", dimDynamicViscosity, 0.01))
+);
+
 // 弾性応力テンソル場（ポスト処理や可視化にも使用）
 Info<< "Creating field tauElastic\n" << endl;
 volSymmTensorField tauElastic
