@@ -10,53 +10,60 @@ FoamFile
     version     2.0;
     format      ascii;
     arch        "LSB;label=32;scalar=64";
-    class       volVectorField;
-    location    "0";
-    object      U;
+    class       polyBoundaryMesh;
+    location    "constant/polyMesh";
+    object      boundary;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -1 0 0 0 0];
-
-internalField   uniform (0 0 0.1);
-
-boundaryField
-{
+7
+(
     inlet
     {
-        type            fixedValue;
-        value           uniform (0 0 0.1);
+        type            patch;
+        nFaces          15;
+        startFace       8315;
     }
     dieWall
     {
-        type            partialSlip;
-        refValue        uniform (0 0 0);
-        valueFraction   uniform 0.95;
+        type            wall;
+        inGroups        1(wall);
+        nFaces          50;
+        startFace       8330;
     }
     outlet
     {
-        type            inletOutlet;
-        inletValue      uniform (0 0 0);
-        value           uniform (0 0 0);
+        type            patch;
+        nFaces          35;
+        startFace       8380;
     }
     atmosphere
     {
-        type            pressureInletOutletVelocity;
-        value           uniform (0 0 0.1);
+        type            patch;
+        nFaces          120;
+        startFace       8415;
     }
     front
     {
         type            wedge;
+        inGroups        1(wedge);
+        nFaces          4250;
+        startFace       8535;
     }
     back
     {
         type            wedge;
+        inGroups        1(wedge);
+        nFaces          4250;
+        startFace       12785;
     }
     defaultFaces
     {
         type            empty;
+        inGroups        1(empty);
+        nFaces          0;
+        startFace       17035;
     }
-}
-
+)
 
 // ************************************************************************* //
