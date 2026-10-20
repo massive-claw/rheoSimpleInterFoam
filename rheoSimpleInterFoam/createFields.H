@@ -190,6 +190,7 @@ volSymmTensorField tauElastic
         IOobject::AUTO_WRITE
     ),
     mesh,
-    dimensionedSymmTensor(dimForce/dimArea, Zero)
+    dimensionedSymmTensor(dimForce/dimArea, Zero),
+    zeroGradientFvPatchSymmTensorField::typeName
 );
 
