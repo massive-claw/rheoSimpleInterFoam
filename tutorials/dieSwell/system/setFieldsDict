@@ -22,7 +22,7 @@ regions
     boxToCell
     {
         // Pre-fill the die interior (0 <= z <= 5.0001)
-        box (-1 -1 -1) (1 1 5.0001);
+        box (-0.0011 -0.0011 -0.001) (0.0011 0.0011 0.005001);
         fieldValues
         (
             volScalarFieldValue alpha.water 1

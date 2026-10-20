@@ -18,7 +18,7 @@
 
     // 4. Tensor terms: D^2 and algebraical A2 approximation
     volSymmTensorField D2(symm(D & D));
-    volSymmTensorField A2_approx(4.0 * symm(D & L));
+    volSymmTensorField A2_approx(4.0 * symm(D & L.T()));
 
     // 5. Algebraic elastic stress tensor
     tauElastic = - 0.5 * Psi1Eff * A2_approx + 4.0 * (Psi1Eff + Psi2) * D2;
