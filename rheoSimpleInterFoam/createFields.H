@@ -169,7 +169,21 @@ dimensionedScalar powerN
 
 scalar maxStressRatio
 (
-    transportProperties.lookupOrDefault<scalar>("maxStressRatio", 20.0)
+    transportProperties.lookupOrDefault<scalar>("maxStressRatio", 1.0)
+);
+
+dimensionedScalar maxGammaDot
+(
+    transportProperties.lookupOrDefault<dimensionedScalar>
+    (
+        "maxGammaDot",
+        dimensionedScalar("maxGammaDot", dimless/dimTime, 600.0)
+    )
+);
+
+scalar relaxTau
+(
+    transportProperties.lookupOrDefault<scalar>("relaxTau", 0.2)
 );
 
 dimensionedScalar muNum

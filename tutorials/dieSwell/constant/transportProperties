@@ -32,11 +32,13 @@ air
 sigma           0.001;
 
 // Viscoelastic properties
-Psi1            [1 -1 0 0 0 0 0] 0.01;
+Psi1            [1 -1 0 0 0 0 0] 0.002;
 Psi2            [1 -1 0 0 0 0 0] 0.0;
 
 // High-Wi numerical stabilization parameters
-lambda          [0 0 1 0 0 0 0] 0.05;
+lambda          [0 0 1 0 0 0 0] 0.02;
 powerN          [0 0 0 0 0 0 0] 0.5;
-maxStressRatio  20.0;
-muNum           [1 -1 -1 0 0 0 0] 0.005;
+maxStressRatio  1.0;
+maxGammaDot     [0 0 -1 0 0 0 0] 600.0;
+relaxTau        0.2;
+muNum           [1 -1 -1 0 0 0 0] 0.02;

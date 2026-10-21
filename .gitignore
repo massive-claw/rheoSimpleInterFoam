@@ -3,3 +3,10 @@ Make/linux*
 *.dep
 rheoSimpleInterFoam/Make/linux64GccDPInt32Opt
 tutorials/dieSwell/constant/polyMesh
+tutorials/dieSwell/0.*/
+tutorials/dieSwell/processor*/
+tutorials/dieSwell/run.log
+
+0.*/
+processor*/
+run.log
