@@ -18,7 +18,7 @@ FoamFile
 
 dimensions      [0 1 -1 0 0 0 0];
 
-internalField   uniform (0 0 0.1);
+internalField   uniform (0 0 0);
 
 boundaryField
 {
@@ -29,9 +29,7 @@ boundaryField
     }
     dieWall
     {
-        type            partialSlip;
-        refValue        uniform (0 0 0);
-        valueFraction   uniform 0.95;
+        type            noSlip;
     }
     outlet
     {
@@ -42,7 +40,7 @@ boundaryField
     atmosphere
     {
         type            pressureInletOutletVelocity;
-        value           uniform (0 0 0.1);
+        value           uniform (0 0 0);
     }
     front
     {
