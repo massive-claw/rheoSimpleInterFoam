@@ -1,3 +1,5 @@
 Make/linux*
 *.o
 *.dep
+rheoSimpleInterFoam/Make/linux64GccDPInt32Opt
+tutorials/dieSwell/constant/polyMesh

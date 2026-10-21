@@ -5,8 +5,8 @@
 ## 1. Overview
 * **Solver Name**: `rheoSimpleInterFoam`
 * **Target Binary**: `$(FOAM_USER_APPBIN)/rheoSimpleInterFoam`
-* **Governing Equations**: Adds the divergence of the elastic extra stress tensor `+ fvc::div(tauElastic)` to the right-hand side of the momentum equation (`UEqn.H`).
-* **Constitutive Model**: Second-order fluid (CEF) algebraic approximation using Rivlin-Ericksen tensors ($A_1, A_2$) and normal stress coefficients ($\Psi_1, \Psi_2$), with phase-masking for two-phase interfaces.
+* **Governing Equations**: Adds the divergence of the elastic extra stress tensor `+ fvc::div(tauElastic)` to the right-hand side of the momentum equation (`UEqn.H`). It includes Both-Sides Diffusion (BSD) stabilization with phase masking (`alpha1 * muNum`) to avoid artificial drag in the air phase.
+* **Constitutive Model**: Second-order fluid (CEF) algebraic approximation using Rivlin-Ericksen tensors ($A_1, A_2$) and normal stress coefficients ($\Psi_1, \Psi_2$). High-shear regions are stabilized using Carreau-type attenuation applied to both $\Psi_1$ and $\Psi_2$, and phase-masking is applied for two-phase interfaces.
 
 ---
 

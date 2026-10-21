@@ -68,3 +68,11 @@ PIMPLE
     nCorrectors         3;
     nNonOrthogonalCorrectors 0;
 }
+
+relaxationFactors
+{
+    equations
+    {
+        "U.*"           0.7;
+    }
+}

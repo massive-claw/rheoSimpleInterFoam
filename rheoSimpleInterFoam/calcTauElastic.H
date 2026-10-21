@@ -10,23 +10,26 @@
     // 2. Shear rate: gammaDot = sqrt(2 * D:D)
     volScalarField gammaDot(Foam::sqrt(2.0) * mag(D));
 
-    // 3. Carreau-type shear-attenuation for Psi1
-    volScalarField Psi1Eff
+    // 3. Carreau-type shear-attenuation for Psi1 and Psi2
+    volScalarField attenuation
     (
-        Psi1 / pow(scalar(1.0) + sqr(lambda * gammaDot), (scalar(1.0) - powerN.value()) / 2.0)
+        pow(scalar(1.0) + sqr(lambda * gammaDot), (scalar(1.0) - powerN.value()) / 2.0)
     );
+    volScalarField Psi1Eff(Psi1 / attenuation);
+    volScalarField Psi2Eff(Psi2 / attenuation);
 
     // 4. Tensor terms: D^2 and algebraical A2 approximation
     volSymmTensorField D2(symm(D & D));
     volSymmTensorField A2_approx(4.0 * symm(D & L.T()));
 
     // 5. Algebraic elastic stress tensor
-    tauElastic = - 0.5 * Psi1Eff * A2_approx + 4.0 * (Psi1Eff + Psi2) * D2;
+    tauElastic = - 0.5 * Psi1Eff * A2_approx + 4.0 * (Psi1Eff + Psi2Eff) * D2;
 
-    // 6. Stress limiter against singularity
+    // 6. Stress limiter against singularity (based on phase-1 viscosity)
+    volScalarField mu1(rho1 * mixture.nuModel1().nu());
     volScalarField tauLim
     (
-        maxStressRatio * (2.0 * mixture.mu() * gammaDot + dimensionedScalar("eps", dimPressure, 1e-4))
+        maxStressRatio * (2.0 * mu1 * gammaDot + dimensionedScalar("eps", dimPressure, 1e-4))
     );
     volScalarField magTau(mag(tauElastic));
     volScalarField limiter(min(scalar(1.0), tauLim / (magTau + dimensionedScalar("eps", dimPressure, 1e-6))));

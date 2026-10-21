@@ -3,16 +3,18 @@
     // 1. 最新の U から弾性応力テンソル tauElastic を計算
     #include "calcTauElastic.H"
 
+    volScalarField muNumEff("muNumEff", alpha1 * muNum);
+
     fvVectorMatrix UEqn
     (
         fvm::ddt(rho, U) + fvm::div(rhoPhi, U)
       + MRF.DDt(rho, U)
       + turbulence->divDevRhoReff(rho, U)
-      - fvm::laplacian(muNum, U)
+      - fvm::laplacian(muNumEff, U)
      ==
         fvOptions(rho, U)
       + fvc::div(tauElastic)
-      - fvc::laplacian(muNum, U)
+      - fvc::laplacian(muNumEff, U)
     );
 
     UEqn.relax();
